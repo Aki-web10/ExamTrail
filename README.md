@@ -4,6 +4,7 @@
 
 ### 画面設計(Figma)
 - https://www.figma.com/design/SfIjdxM5g1QmB3tyd1TIpk/%E7%84%A1%E9%A1%8C?node-id=0-1&p=f&t=M52UuYe14ZXPNzdj-0
+<img width="1221" height="546" alt="スクリーンショット 2026-03-11 15 12 51" src="https://github.com/user-attachments/assets/6ae14225-9730-4e75-be45-9371cfa2e2dc" />
 
 ### DB設計
 -
