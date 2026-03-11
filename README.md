@@ -4,3 +4,9 @@
 
 ### 画面設計(Figma)
 - https://www.figma.com/design/SfIjdxM5g1QmB3tyd1TIpk/%E7%84%A1%E9%A1%8C?node-id=0-1&p=f&t=M52UuYe14ZXPNzdj-0
+
+### DB設計
+-
+
+### API設計
+-
