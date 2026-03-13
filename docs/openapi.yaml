@@ -1,0 +1,194 @@
+openapi: 3.0.0
+info:
+  title: ExamTrail API
+  description: Study log service for exam preparation
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8000/api/v1
+
+paths:
+  /auth/register:
+    post:
+      summary: ユーザー登録
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+      responses:
+        "201":
+          description: ユーザー作成成功
+
+  /auth/login:
+    post:
+      summary: ログイン
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+      responses:
+        "200":
+          description: ログイン成功
+
+  /exams:
+    get:
+      summary: 試験一覧取得
+      responses:
+        "200":
+          description: 試験一覧取得成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    exam_date:
+                      type: string
+                      format: date
+                    status:
+                      type: string
+                    created_at:
+                     type: string
+                     format: date-time
+                    updated_at:
+                      type: string
+                      format: date-time
+
+    post:
+      summary: 試験登録
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                exam_date:
+                  type: string
+                  format: date
+                status:
+                  type: string
+      responses:
+        "201":
+          description: 試験登録成功
+
+  /study-logs:
+    get:
+      summary: 学習ログ一覧取得
+      responses:
+        "200":
+          description: 学習ログ取得成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    exam_id:
+                      type: integer
+                    category_id:
+                      type: integer
+                    date:
+                      type: string
+                      format: date
+                    minutes:
+                      type: integer
+                    content:
+                      type: string
+                    memo:
+                      type: string
+                    created_at:
+                      type: string
+                      format: date-time
+                    updated_at:
+                      type: string
+                      format: date-time
+
+    post:
+      summary: 学習ログ登録
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                exam_id:
+                  type: integer
+                category_id:
+                  type: integer
+                date:
+                  type: string
+                  format: date
+                minutes:
+                  type: integer
+                content:
+                  type: string
+                memo:
+                  type: string
+      responses:
+        "201":
+          description: 学習ログ登録成功
+
+  /study-logs/{id}:
+    delete:
+      summary: 学習ログ削除
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: 学習ログ削除成功
+
+  /analytics:
+    get:
+      summary: 学習分析取得
+      responses:
+        "200":
+          description: 分析結果取得成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_study_minutes:
+                    type: integer
+                  weak_categories:
+                    type: array
+                    items:
+                      type: string
+                  strong_categories:
+                    type: array
+                    items:
+                      type: string
+                  pass_probability:
+                    type: integer
